@@ -41,10 +41,15 @@ namespace empAI.Controllers
         [HttpPost]
         public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             _context.Employees.Add(employee);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetEmployee), new { id = employee.EmployeeId }, employee);
+            return CreatedAtAction("GetEmployee", new { id = employee.EmployeeId }, employee);
         }
 
         // PUT: api/Employees/{id}

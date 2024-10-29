@@ -24,6 +24,9 @@ namespace empAI.Migrations
                     b.Property<string>("EmployeeId")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("EmployeeDateOfBirth")
                         .HasColumnType("datetime(6)");
 
@@ -35,9 +38,36 @@ namespace empAI.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("MaritalStatus")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Organization")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Rank")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Route")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("Weight")
+                        .HasColumnType("double");
+
+                    b.Property<string>("location")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("EmployeeId");
 
-                    b.ToTable("Employees");
+                    b.ToTable("employees", (string)null);
                 });
 #pragma warning restore 612, 618
         }
