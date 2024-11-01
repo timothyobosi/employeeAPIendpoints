@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using empAI.Data;
 using empAI.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.JsonPatch.Exceptions;
 
 namespace empAI.Controllers
 {
@@ -82,5 +84,42 @@ namespace empAI.Controllers
 
             return NoContent();
         }
+
+        // PATCH: api/Employees/{id}
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchEmployee(string id, [FromBody] JsonPatchDocument<Employee> patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                return BadRequest();
+            }
+
+            var employee = await _context.Employees.FindAsync(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                patchDoc.ApplyTo(employee);  // Removed ModelState as a second argument
+            }
+            catch (JsonPatchException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            if (!TryValidateModel(employee)) // Validates the employee object based on the model's data annotations
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.Entry(employee).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
     }
 }
