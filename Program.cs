@@ -4,7 +4,7 @@ using empAI.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(); // Ensure Newtonsoft.Json is added here
 
 // Configure Entity Framework with MySQL
 builder.Services.AddDbContext<EmployeeContext>(options =>

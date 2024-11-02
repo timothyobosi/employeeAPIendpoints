@@ -4,6 +4,7 @@ using empAI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Exceptions;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace empAI.Controllers
 {
@@ -85,40 +86,33 @@ namespace empAI.Controllers
             return NoContent();
         }
 
-        // PATCH: api/Employees/{id}
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchEmployee(string id, [FromBody] JsonPatchDocument<Employee> patchDoc)
+        public IActionResult PatchEmployee(string id, [FromBody] JsonPatchDocument<Employee> patchDoc)
         {
             if (patchDoc == null)
-            {
                 return BadRequest();
-            }
 
-            var employee = await _context.Employees.FindAsync(id);
+            // Retrieve the employee by ID
+            var employee = _context.Employees.FirstOrDefault(e => e.EmployeeId == id);
             if (employee == null)
-            {
                 return NotFound();
-            }
 
-            try
-            {
-                patchDoc.ApplyTo(employee);  // Removed ModelState as a second argument
-            }
-            catch (JsonPatchException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            // Apply the patch to the employee object
+            patchDoc.ApplyTo(employee, ModelState);
 
-            if (!TryValidateModel(employee)) // Validates the employee object based on the model's data annotations
-            {
+            // Check if there are any model validation errors
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            }
 
-            _context.Entry(employee).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            // Ensure Entity Framework detects the change for the Rank property
+            _context.Entry(employee).Property(e => e.Rank).IsModified = true;
+
+            // Save changes to the database
+            _context.SaveChanges();
 
             return NoContent();
         }
+
 
 
     }
