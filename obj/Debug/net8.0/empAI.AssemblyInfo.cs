@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("empAI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bdb1a1578ffae4735cd77db0af1bd1175f234c09")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+efb1cc4fd24bf484103018781fd60a2ed823feb2")]
 [assembly: System.Reflection.AssemblyProductAttribute("empAI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("empAI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

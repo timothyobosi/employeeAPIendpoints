@@ -1,11 +1,58 @@
 {
   "Version": 1,
-  "Hash": "g1zc46ncmG52f4P7GBKeV9LBsOKsiMMFQbrQ9x+h91g=",
+  "Hash": "Fpg7/lMkbMoGXtdCyQ1r9JShyGEb7yrp6nLjngHRDLE=",
   "Source": "empAI",
   "BasePath": "_content/empAI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "empAI\\wwwroot",
+      "Source": "empAI",
+      "ContentRoot": "C:\\Users\\TObosi\\source\\NewRepo\\empl\\wwwroot\\",
+      "BasePath": "_content/empAI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\TObosi\\source\\NewRepo\\empl\\wwwroot\\index.html",
+      "SourceId": "empAI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TObosi\\source\\NewRepo\\empl\\wwwroot\\",
+      "BasePath": "_content/empAI",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\TObosi\\source\\NewRepo\\empl\\wwwroot\\js\\employee.js",
+      "SourceId": "empAI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TObosi\\source\\NewRepo\\empl\\wwwroot\\",
+      "BasePath": "_content/empAI",
+      "RelativePath": "js/employee.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\employee.js"
+    }
+  ]
 }

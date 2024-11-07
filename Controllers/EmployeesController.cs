@@ -23,14 +23,34 @@ namespace empAI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-            return await _context.Employees.ToListAsync();
+            // Ensure we are using the correct model and fields
+            var employees = await _context.Employees
+                .Select(emp => new
+                {
+                    emp.EmployeeId,
+                    emp.EmployeeFirstName,
+                    emp.EmployeeLastName,
+                    emp.EmployeeDateOfBirth
+                    // Make sure you're only selecting the fields that exist in the current database schema
+                }).ToListAsync();
+
+            return Ok(employees);
         }
 
         // GET: api/Employees/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(string id)
         {
-            var employee = await _context.Employees.FindAsync(id);
+            var employee = await _context.Employees
+                .Where(emp => emp.EmployeeId == id)
+                .Select(emp => new Employee
+                {
+                    EmployeeId = emp.EmployeeId,
+                    EmployeeFirstName = emp.EmployeeFirstName,
+                    EmployeeLastName = emp.EmployeeLastName,
+                    EmployeeDateOfBirth = emp.EmployeeDateOfBirth
+                    // Again, ensure you're selecting the fields that exist in the database
+                }).FirstOrDefaultAsync();
 
             if (employee == null)
             {
@@ -104,8 +124,7 @@ namespace empAI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // Ensure Entity Framework detects the change for the Rank property
-            _context.Entry(employee).Property(e => e.Rank).IsModified = true;
+            
 
             // Save changes to the database
             _context.SaveChanges();

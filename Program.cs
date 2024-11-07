@@ -11,6 +11,9 @@ builder.Services.AddDbContext<EmployeeContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 21))));
 
+// Add CORS services
+builder.Services.AddCors();
+
 // Add Swagger/OpenAPI support
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -28,7 +31,17 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
+// Enable CORS
+app.UseCors(builder =>
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader());
+
+
+// Enable static files serving (for the HTML, CSS, and JavaScript in wwwroot)
+app.UseStaticFiles();
+
+app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 

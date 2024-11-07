@@ -1,5 +1,6 @@
 C:\Users\TObosi\source\NewRepo\empl\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\TObosi\source\NewRepo\empl\bin\Debug\net8.0\appsettings.json
+C:\Users\TObosi\source\NewRepo\empl\bin\Debug\net8.0\empAI.staticwebassets.runtime.json
 C:\Users\TObosi\source\NewRepo\empl\bin\Debug\net8.0\empAI.exe
 C:\Users\TObosi\source\NewRepo\empl\bin\Debug\net8.0\empAI.deps.json
 C:\Users\TObosi\source\NewRepo\empl\bin\Debug\net8.0\empAI.runtimeconfig.json
