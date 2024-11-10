@@ -69,11 +69,19 @@ namespace empAI.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Employees.Add(employee);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetEmployee", new { id = employee.EmployeeId }, employee);
+            try
+            {
+                _context.Employees.Add(employee);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetEmployee", new { id = employee.EmployeeId }, employee);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) if necessary
+                return StatusCode(500, "Internal server error");
+            }
         }
+
 
         // PUT: api/Employees/{id}
         [HttpPut("{id}")]

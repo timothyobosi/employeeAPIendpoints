@@ -3,104 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Management</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Employee Records</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Employee Records</h1>
 
-    <div class="container mt-5">
-        <h1 class="text-center">Employee Management</h1>
-        <button class="btn btn-primary mb-3" onclick="employeeTable.openForm()">Add Employee</button>
-        <table class="table table-bordered table-striped" id="employeeTable">
-            <thead class="thead-dark">
+        <!-- Add Employee Form -->
+        <form id="addEmployeeForm">
+            <input type="text" id="employeeId" placeholder="Employee ID" required>
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <input type="date" id="dateOfBirth" required>
+            <button type="submit">Add Employee</button>
+        </form>
+
+        <!-- Employee Table -->
+        <table id="employeeTable">
+            <thead>
                 <tr>
                     <th>Employee ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Date of Birth</th>
-                    <th>Age</th>
-                    <th>Location</th>
-                    <th>Gender</th>
-                    <th>Rank</th>
-                    <th>Weight</th>
-                    <th>Organization</th>
-                    <th>Marital Status</th>
-                    <th>Route</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                <!-- Dynamic content will be inserted here by JavaScript -->
+            </tbody>
         </table>
     </div>
 
-    <!-- Employee Form Modal -->
-    <div class="modal" id="employeeFormModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Employee Form</h5>
-                    <button type="button" class="close" onclick="employeeTable.closeForm()">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="employeeForm">
-                        <div class="form-group">
-                            <label for="employeeId">Employee ID</label>
-                            <input type="text" class="form-control" id="employeeId" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeFirstName">First Name</label>
-                            <input type="text" class="form-control" id="employeeFirstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeLastName">Last Name</label>
-                            <input type="text" class="form-control" id="employeeLastName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeDateOfBirth">Date of Birth</label>
-                            <input type="date" class="form-control" id="employeeDateOfBirth" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeAge">Age</label>
-                            <input type="number" class="form-control" id="employeeAge" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeLocation">Location</label>
-                            <input type="text" class="form-control" id="employeeLocation" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeGender">Gender</label>
-                            <input type="text" class="form-control" id="employeeGender" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeRank">Rank</label>
-                            <input type="text" class="form-control" id="employeeRank" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeWeight">Weight</label>
-                            <input type="number" class="form-control" id="employeeWeight" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeOrganization">Organization</label>
-                            <input type="text" class="form-control" id="employeeOrganization" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeMaritalStatus">Marital Status</label>
-                            <input type="text" class="form-control" id="employeeMaritalStatus" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeRoute">Route</label>
-                            <input type="text" class="form-control" id="employeeRoute" required>
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="employeeTable.saveEmployee()">Save</button>
-                        <button type="button" class="btn btn-secondary" onclick="employeeTable.closeForm()">Cancel</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="employee.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
